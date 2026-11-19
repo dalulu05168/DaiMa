@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/about-us.html",
+      "destination": "/about-us",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/about-us",
+      "destination": "/about-us.html"
+    }
+  ]
+}
