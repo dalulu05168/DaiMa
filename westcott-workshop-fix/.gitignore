@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+data/
+runtime/
+payload/
+*.exe
+*.db
+*.db-*
+*.sqlite*
+*.key
+*.log
+.env*
+node-path.txt

@@ -1,0 +1,309 @@
+html[data-westcott-theme="mint"] {
+  color-scheme: dark;
+
+  --westcott-chat: #282d30;
+  --westcott-surface: #33393d;
+  --westcott-border: #434a4f;
+  --westcott-primary: #4a9b7f;
+  --westcott-hover: #57ab8e;
+  --westcott-accent: #2f4740;
+  --westcott-text: #e8ecef;
+  --westcott-muted: #9ba3a9;
+  --westcott-on-primary: #ffffff;
+
+  /* CloudCLI's Tailwind utilities wrap these channels in hsl(). */
+  --background: 202.5 9.0909% 17.2549%;
+  --foreground: 205.7143 17.9487% 92.3529%;
+  --card: 204 8.9286% 21.9608%;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --secondary: var(--card);
+  --secondary-foreground: var(--foreground);
+  --muted: var(--card);
+  --muted-foreground: 205.7143 7.5269% 63.5294%;
+  --accent: 162.5 20.339% 23.1373%;
+  --accent-foreground: var(--primary);
+  --primary: 159.2593 35.3712% 44.902%;
+  --primary-foreground: 0 0% 100%;
+  --border: 205 8.2192% 28.6275%;
+  --input: var(--border);
+  --ring: var(--primary);
+
+  --nav-glass-bg: var(--card) / .94;
+  --nav-tab-glow: var(--primary) / .2;
+  --nav-tab-ring: var(--primary) / .24;
+  --nav-float-ring: var(--border) / 1;
+  --nav-divider-color: var(--border) / 1;
+  --nav-input-bg: var(--card) / 1;
+  --nav-input-focus-ring: var(--primary) / .35;
+  --tw-prose-body: var(--westcott-text);
+  --tw-prose-headings: var(--westcott-text);
+
+  background-color: var(--westcott-chat);
+  color: var(--westcott-text);
+}
+
+html[data-westcott-theme="mint"] :is(body, .chat-messages-pane, .chat-composer-shell) {
+  background-color: var(--westcott-chat);
+}
+
+/* The desktop sidebar and composer use different classes than the mobile drawer. */
+html[data-westcott-theme="mint"] :is(
+  .fixed.inset-0.flex.bg-background > .relative.h-full.flex-shrink-0.border-r,
+  .fixed.inset-0.flex.bg-background > .relative.h-full.flex-shrink-0.border-r > .h-full.bg-background\/80,
+  .fixed.inset-0.flex.bg-background .w-12.bg-background\/80,
+  .fixed.inset-0.z-50 .bg-card > .h-full.bg-background\/80,
+  [data-slot="prompt-input"],
+  .bg-card,
+  aside.bg-muted\/30,
+  .dark\:bg-gray-800,
+  .dark\:bg-slate-800,
+  .dark\:bg-zinc-800
+) {
+  background-color: var(--westcott-surface);
+}
+
+html[data-westcott-theme="mint"] :is(
+  input.bg-background,
+  textarea.bg-background,
+  select.bg-background,
+  [role="combobox"].bg-background
+) {
+  background-color: var(--westcott-surface);
+}
+
+html[data-westcott-theme="mint"] :is(
+  .border-border\/30,
+  .border-border\/40,
+  .border-border\/50,
+  .border-border\/60,
+  .border-input,
+  .dark\:border-gray-700,
+  .dark\:border-slate-700,
+  .dark\:border-zinc-700
+) {
+  border-color: var(--westcott-border);
+}
+
+html[data-westcott-theme="mint"] :is(
+  .dark\:text-gray-400,
+  .dark\:text-slate-400,
+  .dark\:text-zinc-400,
+  .text-muted-foreground
+) {
+  color: var(--westcott-muted);
+}
+
+html[data-westcott-theme="mint"] :is(input, textarea)::placeholder {
+  color: var(--westcott-muted);
+  opacity: 1;
+}
+
+/* The built-in composer placeholder uses important color and text fill. */
+html[data-westcott-theme="mint"] .chat-input-placeholder::placeholder {
+  color: var(--westcott-muted) !important;
+  -webkit-text-fill-color: var(--westcott-muted) !important;
+}
+
+/* Preserve the original hover/focus behavior, with mint on primary actions. */
+html[data-westcott-theme="mint"] :is(
+  .bg-primary,
+  button.bg-blue-600,
+  a.bg-blue-600
+) {
+  background-color: var(--westcott-primary);
+  color: var(--westcott-on-primary);
+}
+
+html[data-westcott-theme="mint"] :is(
+  .bg-primary,
+  button.bg-blue-600,
+  a.bg-blue-600
+):not(:disabled):hover {
+  background-color: var(--westcott-hover);
+}
+
+html[data-westcott-theme="mint"] :is(
+  .bg-accent,
+  .bg-primary\/10.text-primary,
+  .bg-primary\/15.text-primary,
+  .bg-blue-500\/10.ring-blue-500\/40,
+  button.bg-background.shadow-sm.ring-border\/50,
+  span.bg-blue-100.dark\:bg-blue-900\/30,
+  .dark\:bg-emerald-900\/30,
+  .dark\:bg-green-900\/30,
+  .bg-emerald-500\/10,
+  .bg-green-500\/10
+) {
+  background-color: var(--westcott-accent);
+}
+
+html[data-westcott-theme="mint"] :is(
+  .text-accent-foreground,
+  .text-primary,
+  button.bg-background.shadow-sm.ring-border\/50,
+  span.text-blue-700.dark\:text-blue-300,
+  .dark\:text-green-300,
+  .dark\:text-green-400,
+  .dark\:text-emerald-300,
+  .dark\:text-emerald-400
+) {
+  color: var(--westcott-primary);
+}
+
+html[data-westcott-theme="mint"] :is(
+  .transition-colors.bg-accent,
+  .transition-colors.bg-primary\/10.text-primary,
+  button.bg-background.shadow-sm.ring-border\/50
+):hover {
+  color: var(--westcott-hover);
+}
+
+html[data-westcott-theme="mint"] ::selection {
+  color: var(--westcott-on-primary);
+  background-color: var(--westcott-primary);
+}
+
+html[data-westcott-theme="mint"] {
+  scrollbar-color: var(--westcott-border) transparent;
+}
+
+/* ===== 剧本工坊一体化（嵌入辰南） ===== */
+
+/* 1. 侧边栏去品牌化：隐藏 CloudCLI 图标、Star 徽标、报告问题、加入社区 */
+html[data-westcott-theme="mint"] div:has(> h1[data-ew-title]) > div:first-child,
+html[data-westcott-theme="mint"] .group\/star,
+html[data-westcott-theme="mint"] a[href*="claudecodeui/issues"],
+html[data-westcott-theme="mint"] a[href*="discord.gg"] {
+  display: none !important;
+}
+html[data-westcott-theme="mint"] h1[data-ew-title] {
+  font-size: 15px;
+  letter-spacing: .08em;
+  color: var(--westcott-text);
+}
+
+/* 2. 顶部隐藏「源代码管理」标签 */
+html[data-westcott-theme="mint"] button[role="tab"][aria-label="源代码管理"] {
+  display: none !important;
+}
+
+/* 2. 输入框：深岩灰圆角，松石绿发送键 */
+html[data-westcott-theme="mint"] form[data-slot="prompt-input"] {
+  background-color: #212528 !important;
+  border: 1px solid #3e454a !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+html[data-westcott-theme="mint"] form[data-slot="prompt-input"]:focus-within {
+  border-color: var(--westcott-primary) !important;
+}
+html[data-westcott-theme="mint"] [data-slot="prompt-input-footer"] {
+  border-top-color: #3e454a !important;
+}
+html[data-westcott-theme="mint"] form[data-slot="prompt-input"] button[type="submit"] {
+  background-color: var(--westcott-primary) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+}
+html[data-westcott-theme="mint"] form[data-slot="prompt-input"] button[type="submit"]:not(:disabled):hover {
+  background-color: var(--westcott-hover) !important;
+}
+
+/* 2. 快捷指令胶囊 */
+.ew-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 8px;
+}
+.ew-quick button {
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid #3e454a;
+  background: #33393d;
+  color: var(--westcott-text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.ew-quick button:hover:not(:disabled) {
+  background: var(--westcott-primary);
+  border-color: var(--westcott-primary);
+  color: #fff;
+}
+.ew-quick button:disabled {
+  opacity: .45;
+  cursor: default;
+}
+.ew-quick-note:not(:empty) {
+  align-self: center;
+  color: var(--westcott-muted);
+  font-size: 12px;
+}
+
+/* 3. 剧本交付卡片：深色底、左侧松石绿竖线、常显大号复制键 */
+html[data-westcott-theme="mint"] .chat-message .prose div.group:has(> pre) {
+  background: #212528 !important;
+  border: 1px solid #3e454a !important;
+  border-left: 4px solid var(--westcott-primary) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+html[data-westcott-theme="mint"] .chat-message .prose div.group:has(> pre) button[title="复制代码"] {
+  opacity: 1 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px !important;
+  border-radius: 8px !important;
+  background: var(--westcott-primary);
+  color: #fff !important;
+  font-size: 13px;
+  font-family: system-ui, sans-serif;
+}
+html[data-westcott-theme="mint"] .chat-message .prose div.group:has(> pre) button[title="复制代码"]::after {
+  content: "复制";
+}
+html[data-westcott-theme="mint"] .chat-message .prose div.group:has(> pre) button[title="复制代码"]:hover {
+  background: var(--westcott-hover);
+}
+html[data-westcott-theme="mint"] .chat-message .prose div[data-ew-script] > pre,
+html[data-westcott-theme="mint"] .chat-message .prose div[data-ew-script] > pre > code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  font-family: system-ui, "Microsoft YaHei", sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+  color: var(--westcott-text) !important;
+}
+
+/* 3. 技术步骤默认折叠：连续的工具调用只留一行摘要，点开可看 */
+html[data-westcott-theme="mint"] .chat-message[data-ew-tool]:not([data-ew-open]):not([data-ew-first]) {
+  display: none !important;
+}
+html[data-westcott-theme="mint"] .chat-message[data-ew-first]:not([data-ew-open]) > * {
+  display: none !important;
+}
+html[data-westcott-theme="mint"] .chat-message[data-ew-first]::before {
+  content: "▸ " attr(data-ew-summary);
+  display: block;
+  margin: 4px 0;
+  padding: 5px 12px;
+  width: fit-content;
+  border: 1px dashed #434a4f;
+  border-radius: 8px;
+  color: var(--westcott-muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+html[data-westcott-theme="mint"] .chat-message[data-ew-first][data-ew-open]::before {
+  content: "▾ " attr(data-ew-summary) "（点击收起）";
+}
+html[data-westcott-theme="mint"] .chat-message[data-ew-first]:hover::before {
+  color: var(--westcott-text);
+  border-color: var(--westcott-primary);
+}
