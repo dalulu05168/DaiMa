@@ -1,6 +1,6 @@
 Unicode true
 RequestExecutionLevel user
-SetCompressor /SOLID zlib
+SetCompress off
 ManifestDPIAware true
 !include "MUI2.nsh"
 !include "FileFunc.nsh"
@@ -13,6 +13,7 @@ VIAddVersionKey "ProductName" "ELLERY WESTCOTT"
 VIAddVersionKey "FileDescription" "ELLERY WESTCOTT Setup"
 VIAddVersionKey "FileVersion" "1.4.31"
 VIAddVersionKey "ProductVersion" "1.4.31"
+VIAddVersionKey "LegalCopyright" "ELLERY WESTCOTT"
 !define MUI_ICON "payload\resources\modules\market\assets\ew-studio.ico"
 !define MUI_UNICON "payload\resources\modules\market\assets\ew-studio.ico"
 
@@ -25,8 +26,25 @@ VIAddVersionKey "ProductVersion" "1.4.31"
 
 Section
   SetOutPath "$INSTDIR"
-  SetOverwrite on
-  File /r "payload\*"
+  StrCpy $3 "$WINDIR\Sysnative\tar.exe"
+  IfFileExists "$3" tarAvailable
+  StrCpy $3 "$SYSDIR\tar.exe"
+  IfFileExists "$3" tarAvailable
+  SetErrorLevel 1
+  Abort "Windows tar.exe is required to unpack ELLERY WESTCOTT."
+tarAvailable:
+  InitPluginsDir
+  SetOutPath "$PLUGINSDIR"
+  File "westcott-payload.zip"
+  nsExec::ExecToStack '"$3" -xf "$PLUGINSDIR\westcott-payload.zip" -C "$INSTDIR"'
+  Pop $0
+  Pop $2
+  StrCmp $0 "0" extracted
+  DetailPrint "$2"
+  SetErrorLevel 1
+  Abort "ELLERY WESTCOTT could not unpack the application files."
+extracted:
+  SetOutPath "$INSTDIR"
   WriteUninstaller "$INSTDIR\Uninstall ELLERY WESTCOTT.exe"
   ${GetParameters} $0
   ClearErrors

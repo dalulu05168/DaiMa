@@ -11,7 +11,7 @@
 
 `app/` 中的文件覆盖小助手的 `resources/app/src/` 同名文件。`claudecodeui-local/` 提供本地 CloudCLI 启动和外观文件。已装依赖由 CloudCLI 1.37.9 的一套可运行 Windows x64 工作目录提供。旧用户数据留在现有 CloudCLI 的 `data` 目录。
 
-准备可用的 ELLERY WESTCOTT 1.4.30 原始安装目录、CloudCLI 1.37.9 的本地工作目录、Windows x64 Node.js 24.22.3、Python 3.12 和 NSIS 3.04 或更高版本。先将 `claudecodeui-local/` 中的补丁文件覆盖到 CloudCLI 工作目录中，保留生产依赖与数据目录。使用 Node.js 对应版本的官方许可证。 [Node.js 24.22.3 LICENSE](https://github.com/nodejs/node/blob/v24.22.3/LICENSE)
+准备可用的 ELLERY WESTCOTT 1.4.30 原始安装目录、CloudCLI 1.37.9 的本地工作目录、Windows x64 Node.js 24.22.3、Python 3.12、Windows tar.exe 和 NSIS 3.04 或更高版本。先将 `claudecodeui-local/` 中的补丁文件覆盖到 CloudCLI 工作目录中，保留生产依赖与数据目录。使用 Node.js 对应版本的官方许可证。 [Node.js 24.22.3 LICENSE](https://github.com/nodejs/node/blob/v24.22.3/LICENSE)
 
 以下命令中的路径为示例，需要换成本机实际目录。
 
@@ -19,6 +19,7 @@
 python .\stage-release.py C:\EW-installed C:\cloudcli-local C:\Node\node.exe C:\EW-build\payload --node-license C:\Node\LICENSE
 Copy-Item .\workshop-installer.nsi C:\EW-build
 Set-Location C:\EW-build
+tar.exe -a -cf westcott-payload.zip -C payload .
 makensis .\workshop-installer.nsi
 ```
 
